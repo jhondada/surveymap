@@ -1,0 +1,120 @@
+<% layout("layouts/boilerplate")%>
+<style>
+  div {
+    padding-bottom: 5px;
+    padding-top: 5px;
+  }
+</style>
+<div class="container">
+  <h2 class="text-center mt-4">Boundary Survey Data Entry Form</h2>
+
+  <form
+    action=""
+    method="post"
+    class="g-3 needs-validation validated-form"
+    novalidate
+  >
+    <!-- <div class="mb-3">
+        <label class="form-label" for="title">Title</label> -->
+    <div class="col-md-6">
+      <!-- <div class="mb-3">
+        <label for="boundary_id" class="form-label">Boundary ID:</label>
+        <input
+          type="text"
+          class="form-control"
+          name="boundary_id"
+          id="boundary_id"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="survey_date" class="form-label">Survey Date:</label>
+        <input
+          type="date"
+          class="form-control"
+          id="survey_date"
+          name="survey_date"
+          required
+        />
+      </div> -->
+      <div class="form-group">
+        <label for="land_use" class="form-label">Land Use:</label>
+        <select class="form-control" id="land_use" name="land_use" required>
+          <option value="">Select</option>
+          <option value="Residential">Residential</option>
+          <option value="Commercial">Commercial</option>
+          <option value="Agricultural">Agricultural</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <!-- <div class="form-group">
+        <label for="" class="form-label">Area (sq. meters):</label>
+        <input type="number" class="form-control" id="" name="area" required />
+      </div>
+      <div class="form-group">
+        <label for="area" class="form-label">Perimeter (meters):</label>
+        <input
+          type="number"
+          class="form-control"
+          id="area"
+          name="perimeter"
+          required
+        />
+      </div> -->
+      <div class="form-group">
+        <label for="surveyor" class="form-label">Surveyor:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="surveyor"
+          name="surveyor"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="client" class="form-label">Client:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="client"
+          name="client"
+          required
+        />
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="type" class="form-label">Geometry Type:</label>
+        <select class="form-control" id="type" name="type" required>
+          <option value="">Select</option>
+          <option value="Polygon">Polygon</option>
+          <option value="LineString">LineString</option>
+          <option value="Point">Point</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="coordinates" class="form-label">Coordinates (JSON):</label>
+        <textarea
+          class="form-control"
+          id="coordinates"
+          name="coordinates"
+          required
+        ></textarea>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="description" class="form-label">Description:</label>
+        <textarea
+          class="form-control"
+          id="description"
+          name="description"
+        ></textarea>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>

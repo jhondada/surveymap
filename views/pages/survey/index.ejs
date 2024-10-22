@@ -1,0 +1,42 @@
+<% layout("layouts/boilerplate")%>
+
+<h1>All Surveys</h1>
+<a href="/surveys/new">Add new Survey</a>
+
+<ul>
+  <% for(let survey of surveys) { %>
+  <div class="card mt-3">
+    <div class="row">
+      <div class="col-md-4">
+        <img src="" alt="" class="image-fluid" />
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">Client: <%= survey.client %></h5>
+          <p class="card-text">Area (sq meter): <%= survey.area %></p>
+          <p class="card-text">
+            <small class="text-muted">Surveyor: <%= survey.surveyor %></small>
+          </p>
+          <a class="btn btn-primary" href="/surveys/<%= survey._id %>"
+            >View Survey Details
+            <!-- <%= survey.client %> -->
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div>
+    <p>Survey ID: <%= survey.boundary_id %></p>
+    <p>survey_date: <%= survey.survey_date %></p>
+    <p>land_use: <%= survey.land_use %></p>
+    <p>area: <%= survey.area %></p>
+    <p>perimeter: <%= survey.perimeter %></p>
+    <p>surveyor: <%= survey.surveyor %></p>
+    <p>client: <%= survey.client %></p>
+    <p>description: <%= survey.description %></p>
+    <p>geometry.type: <%= survey.geometry.type %></p>
+    <p>geometry.coordinates: <%= survey.geometry.coordinates %></p>
+  </div> -->
+  <% } %>
+</ul>

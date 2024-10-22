@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Boundary Map</title>
+
+    <!-- <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    /> -->
+
+    <link rel="stylesheet" href="/leaflet/leaflet.css" />
+
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <!-- <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script> -->
+
+    <script src="/leaflet/leaflet.js"></script>
+
+    <style>
+      #map {
+        height: 600px;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      //   const map = L.map("map").setView([37.7749, -122.4194], 13);
+      //   var map = L.map("map").setView([6.5244, 3.3792], 13);
+      //   var map = L.map("map").setView([6.435556, 3.396111], 50);
+      var map = L.map("map").setView([6.468195, 3.619393], 15);
+      L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: '&copy; <a href="(link unavailable)">OpenStreetMap</a>',
+        subdomains: ["a", "b", "c"],
+      }).addTo(map);
+      fetch("/boundaries")
+        .then((response) => response.json())
+        .then((data) => {
+          L.geoJSON(data, {
+            onEachFeature: (feature, layer) => {
+              layer.bindPopup(feature.properties.boundary_id);
+            },
+          }).addTo(map);
+        })
+        .catch((error) => console.error(error));
+
+      //   var polygon = L.polygon([
+      //     [6.468195, 3.619393],
+      //     [6.46839, 3.618657],
+      //     [6.468387, 3.61866],
+      //     [6.472333, 3.618139],
+      //     [6.468195, 3.619393],
+      //   ]).addTo(map);
+
+      //   var polygonx1 = L.polygon([
+      //     [6.468357, 3.618863],
+      //     [6.468562, 3.619014],
+      //     [6.468523, 3.618727],
+      //     [6.468428, 3.61867],
+      //     [6.468357, 3.618863],
+      //   ]).addTo(map);
+
+      //   var polygonx1 = L.polygon([
+      //     [6.468307, 3.618618],
+      //     [6.468357, 3.618415],
+      //     [6.468225, 3.618318],
+      //     [6.468261, 3.618492],
+      //     [6.468307, 3.618618],
+      //   ]).addTo(map);
+
+      //   var polygonx1 = L.polygon([
+      //   var polygon1 = L.polygon([
+      //     [3.618863, 6.468357],
+      //     [3.619014, 6.468562],
+      //     [3.618727, 6.468523],
+      //     [3.61867, 6.468428],
+      //   ]).addTo(map);
+
+      //   ]).addTo(map);
+
+      ///GEOJSON SECTION
+      var geojsonFeature = {
+        type: "Feature",
+        properties: {
+          name: "Coors Field",
+          amenity: "Baseball Stadium",
+          popupContent: "This is where the Rockies play!",
+        },
+        geometry: {
+          type: "Polygon",
+          coordinates: [
+            [
+              [3.618863, 6.468357],
+              [3.619014, 6.468562],
+              [3.618727, 6.468523],
+              [3.61867, 6.468428],
+
+              //   3.618863, 6.468357
+              //   3.619014, 6.468562
+              //   3.618727, 6.468523
+              //   3.618677, 6.468428
+            ],
+          ],
+        },
+      };
+
+      L.geoJSON(geojsonFeature).addTo(map);
+
+      var geojsonFeature2 = {
+        type: "Feature",
+        properties: {
+          name: "Coors Field",
+          amenity: "Baseball Stadium",
+          popupContent: "This is where the Rockies play!",
+        },
+        geometry: {
+          type: "Polygon",
+          coordinates: [
+            [
+              [3.618618, 6.468307],
+              [3.618415, 6.468357],
+              [3.618318, 6.468225],
+              [3.618492, 6.468261],
+            ],
+          ],
+        },
+      };
+
+      L.geoJSON(geojsonFeature2).addTo(map);
+
+      var geojsonFeature3 = {
+        type: "Feature",
+        properties: {
+          name: "Coors Field",
+          amenity: "Baseball Stadium",
+          popupContent: "This is where the Rockies play!",
+        },
+        geometry: {
+          type: "Polygon",
+          coordinates: [
+            [
+              [3.61848, 6.468537],
+              [3.618622, 6.468447],
+              [3.618528, 6.468844],
+              [3.618558, 6.468746],
+            ],
+          ],
+        },
+      };
+
+      L.geoJSON(geojsonFeature3).addTo(map);
+
+      //   3.618863, 6.468357
+      //   3.619014, 6.468562
+      //   3.618727, 6.468523
+      //   3.61867, 6.468428
+    </script>
+  </body>
+</html>

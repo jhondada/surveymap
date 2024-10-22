@@ -1,0 +1,68 @@
+<% layout("layouts/boilerplate")%>
+
+<div class="row">
+  <div class="col-6 offset-3">
+    <div class="card mb-5">
+      <img
+        src="<%= survey.image %>"
+        class="card-img-top"
+        alt="<%= survey.location %>"
+      />
+      <!--       
+    <p>Survey ID: <%= survey.boundary_id %></p>
+    <p>survey_date: <%= survey.survey_date %></p>
+    <p>land_use: <%= survey.land_use %></p>
+    <p>area: <%= survey.area %></p>
+    <p>perimeter: <%= survey.perimeter %></p>
+    <p>surveyor: <%= survey.surveyor %></p>
+    <p>client: <%= survey.client %></p>
+    <p>description: <%= survey.description %></p>
+    <p>geometry.type: <%= survey.geometry.type %></p>
+    <p>geometry.coordinates: <%= survey.geometry.coordinates %></p> -->
+
+      <div class="card-body">
+        <h5 class="card-title">Client: <%= survey.client %></h5>
+        <p class="card-text">Survey ID <%= survey.boundary_id %></p>
+        <!-- <p>Survey ID: <%= survey.boundary_id %></p>
+        <p>Survey date: <%= survey.survey_date %></p> -->
+        <p>Land use: <%= survey.land_use %></p>
+        <!-- <p>Area: <%= survey.area %></p>
+        <p>Perimeter: <%= survey.perimeter %></p> -->
+        <p>Surveyor: <%= survey.surveyor %></p>
+        <p>Description: <%= survey.description %></p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><%= survey.location %></li>
+        <li class="list-group-item">
+          Coordinates: <%= survey.geometry.coordinates %>
+        </li>
+      </ul>
+      <div class="card-body">
+        <a
+          href="/surveys/<%= survey._id %>/edit"
+          class="card-link btn btn-info disabled"
+          >Edit</a
+        >
+        <form
+          class="d-inline"
+          action="/surveys/<%= survey._id %>?_method=DELETE"
+          method="post"
+        >
+          <button class="btn btn-danger disabled">Delete</button>
+        </form>
+
+        <a
+          href="/surveys/map/<%= survey._id %>"
+          class="card-link btn btn-info"
+          target="_blank"
+          >View on Map</a
+        >
+        <!-- <a href="" class="card-link btn btn-warning"></a> -->
+      </div>
+      <div class="card-footer">2 days ago</div>
+      <div class="card-footer">
+        <a href="/surveys">Back to Surveys List</a>
+      </div>
+    </div>
+  </div>
+</div>
